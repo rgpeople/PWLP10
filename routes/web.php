@@ -23,3 +23,5 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('articles',ArcticleController::class);
+// Route Tambah untuk cetakpdf
+Route::get('/article/cetak_pdf',[ArcticleController::class,'cetak_pdf']);

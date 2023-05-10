@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Article;
 use Illuminate\Http\Request;
@@ -107,5 +108,12 @@ class ArcticleController extends Controller
     public function destroy(Article $article)
     {
         //
+    }
+
+    //Tambah Function cetak_pdf
+    public function cetak_pdf(){
+        $articles = Article::all();
+        $pdf = PDF::loadView('articles.articles_pdf',['articles'=>$articles]);
+        return $pdf->stream();
     }
 }
